@@ -599,7 +599,7 @@ int main() {
             }
 
         } else if (pilihan == 3) {
-            if (jumlahRiwayat == 0) {
+            if (headRiwayat == NULL) {
                 printf("\n[INFO] Belum ada riwayat penjualan.\n");
             } else {
                 int sortOpt;
@@ -610,17 +610,30 @@ int main() {
                 scanf("%d", &sortOpt);
                 getchar();
 
-                quickSort(listRiwayat, 0, jumlahRiwayat - 1, sortOpt == 1);
+                // 1. Alokasi Array Pointers secara dinamis berdasarkan jumlahRiwayat saat ini
+                RiwayatNode** arrSort = (RiwayatNode**)malloc(jumlahRiwayat * sizeof(RiwayatNode*));
+                
+                // 2. Salin alamat memory linked list ke dalam array penampung
+                RiwayatNode* curr = headRiwayat;
+                for (int i = 0; i < jumlahRiwayat; i++) {
+                    arrSort[i] = curr;
+                    curr = curr->next;
+                }
 
-                printf("\n=== LAPORAN PENJUALAN ===\n");
+                // 3. Jalankan Quick Sort terupdate menggunakan Array Pointers
+                quickSort(arrSort, 0, jumlahRiwayat - 1, sortOpt == 1);
+
+                printf("\n=== LAPORAN PENJUALAN (DINAMIS LINKED LIST) ===\n");
                 for (int i = 0; i < jumlahRiwayat; i++) {
                     printf("%d. %s | %s | Total: Rp%d\n", i+1, 
-                           listRiwayat[i].nama_pelanggan, 
-                           listRiwayat[i].pesanan, 
-                           listRiwayat[i].total_harga);
+                           arrSort[i]->nama_pelanggan, 
+                           arrSort[i]->pesanan, 
+                           arrSort[i]->total_harga);
                 }
+                
+                // 4. Dealokasi memori array pembantu sementara
+                free(arrSort);
             }
-
         } else if (pilihan == 4) {
             cetakMenuAlpabet(rootMenu);
             int totalMenu = countMenu(rootMenu);
