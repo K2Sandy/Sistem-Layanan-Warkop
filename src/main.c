@@ -421,7 +421,7 @@ void subMenuKelola(MenuNode** rootMenu) {
             }
 
         } else if (menuPilihan == 4) {
-            // ===== HAPUS MENU =====
+            
             char namaHapus[50];
             
             printf("\n>>> HAPUS MENU <<<\n");
@@ -451,7 +451,7 @@ void subMenuKelola(MenuNode** rootMenu) {
             }
 
         } else if (menuPilihan == 5) {
-            // ===== LIHAT DAFTAR MENU =====
+            
             cetakMenuAlpabet(*rootMenu);
             int totalMenu = countMenu(*rootMenu);
             printf("\nTotal menu: %d item\n", totalMenu);
@@ -467,9 +467,7 @@ void subMenuKelola(MenuNode** rootMenu) {
 }
 
 
-// =================================================================
-// 5. MAIN & USER INTERFACE (TAMPILAN KASIR)
-// =================================================================
+
 int main() {
     MenuNode* rootMenu = NULL;
     rootMenu = loadMenuTxt(rootMenu); 
