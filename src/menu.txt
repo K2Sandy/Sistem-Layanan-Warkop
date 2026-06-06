@@ -1,0 +1,9 @@
+Agam 20000
+Dimsum 15000
+Es_Teh_Manis 5000
+Indomie_Telur 13000
+Kopi_Hitam 8000
+Kopi_Sanger 12000
+Mie_Pancung 10000
+ayam 5000
+ayam bakar 23000

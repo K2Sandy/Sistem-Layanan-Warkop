@@ -1,0 +1,6 @@
+hanif Dimsum 30000
+kaka Dimsum 30000
+hanif Dimsum 15000
+hanif Dimsum 45000
+kaka Dimsum x1, Kopi_Sanger x1, Mie_Pancung x1 37000
+hanif Dimsum x2, ayam x1 35000
