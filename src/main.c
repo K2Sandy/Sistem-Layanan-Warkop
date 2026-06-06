@@ -584,19 +584,18 @@ int main() {
                 printf("Total Tagihan: Rp%d\n", total);
                 printf("====================================\n");
                 
-                // Masukkan ke array historis (max 100) & file txt
-                if (jumlahRiwayat < 100) {
-                    strcpy(listRiwayat[jumlahRiwayat].nama_pelanggan, pelanggan->nama);
-                    strcpy(listRiwayat[jumlahRiwayat].pesanan, detailPesanan);
-                    listRiwayat[jumlahRiwayat].total_harga = total;
-                    
-                    simpanKeRiwayatTxt(listRiwayat[jumlahRiwayat]);
-                    jumlahRiwayat++;
-                    printf("[SUKSES] Pesanan selesai diproses & disimpan!\n");
-                } else {
-                    printf("[WARNING] Memori riwayat penuh!\n");
+                // Panggil fungsi tambahRiwayat dinamis (Linked List)
+                tambahRiwayat(pelanggan->nama, detailPesanan, total);
+                
+                // Cari node terakhir yang baru saja dimasukkan untuk ditulis ke txt
+                RiwayatNode* currRiwayat = headRiwayat;
+                while(currRiwayat->next != NULL) {
+                    currRiwayat = currRiwayat->next;
                 }
-                free(pelanggan);
+                simpanKeRiwayatTxt(currRiwayat);
+                printf("[SUKSES] Pesanan selesai diproses & disimpan secara dinamis!\n");
+                
+            free(pelanggan);
             }
 
         } else if (pilihan == 3) {
