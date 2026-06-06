@@ -222,17 +222,17 @@ int countMenu(MenuNode* root) {
 
 
 // =================================================================
-// 3. STRUKTUR DATA: QUICK SORT UNTUK RIWAYAT PENJUALAN
+// 3. STRUKTUR DATA: LINKED LIST UNTUK RIWAYAT TRANSAKSI (DINAMIS)
 // =================================================================
-typedef struct Riwayat {
+typedef struct RiwayatNode {
     char nama_pelanggan[50];
     char pesanan[200];
     int total_harga;
-} Riwayat;
+    struct RiwayatNode* next; // Pointer ke node selanjutnya
+} RiwayatNode;
 
-// Pakai array statis untuk menyederhanakan C (kapasitas 100 transaksi)
-Riwayat listRiwayat[100];
-int jumlahRiwayat = 0;
+RiwayatNode* headRiwayat = NULL; // Head untuk linked list riwayat
+int jumlahRiwayat = 0;           // Counter total transaksi dinamis
 
 void swapRiwayat(Riwayat* a, Riwayat* b) {
     Riwayat temp = *a;
