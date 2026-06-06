@@ -258,17 +258,17 @@ void tambahRiwayat(const char* nama, const char* pesanan, int total) {
     jumlahRiwayat++; 
 }
 
-void swapRiwayat(Riwayat* a, Riwayat* b) {
-    Riwayat temp = *a;
+void swapRiwayat(RiwayatNode** a, RiwayatNode** b) {
+    RiwayatNode* temp = *a;
     *a = *b;
     *b = temp;
 }
 
-int partition(Riwayat arr[], int low, int high, bool ascending) {
-    int pivot = arr[high].total_harga;
+int partition(RiwayatNode* arr[], int low, int high, bool ascending) {
+    int pivot = arr[high]->total_harga;
     int i = low - 1;
     for (int j = low; j < high; j++) {
-        bool condition = ascending ? (arr[j].total_harga < pivot) : (arr[j].total_harga > pivot);
+        bool condition = ascending ? (arr[j]->total_harga < pivot) : (arr[j]->total_harga > pivot);
         if (condition) {
             swapRiwayat(&arr[i + 1], &arr[j]);
             i++;
@@ -278,7 +278,7 @@ int partition(Riwayat arr[], int low, int high, bool ascending) {
     return i + 1;
 }
 
-void quickSort(Riwayat arr[], int low, int high, bool ascending) {
+void quickSort(RiwayatNode* arr[], int low, int high, bool ascending) {
     if (low < high) {
         int pi = partition(arr, low, high, ascending);
         quickSort(arr, low, pi - 1, ascending);
@@ -286,14 +286,13 @@ void quickSort(Riwayat arr[], int low, int high, bool ascending) {
     }
 }
 
-void simpanKeRiwayatTxt(Riwayat r) {
+void simpanKeRiwayatTxt(RiwayatNode* r) {
     FILE* file = fopen("riwayat.txt", "a");
     if (file != NULL) {
-        fprintf(file, "%s %s %d\n", r.nama_pelanggan, r.pesanan, r.total_harga);
+        fprintf(file, "%s %s %d\n", r->nama_pelanggan, r->pesanan, r->total_harga);
         fclose(file);
     }
 }
-
 
 // =================================================================
 // 4. SUBMENU: KELOLA MENU DENGAN INTERFACE YANG LEBIH BAIK
