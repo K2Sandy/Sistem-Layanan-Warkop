@@ -496,10 +496,18 @@ int main() {
             }
 
         } else if (pilihan == 2) {
+            // Pengecekan apakah menu sudah ada atau masih kosong
+            if (rootMenu == NULL) {
+                printf("\n[ERROR] Tidak dapat melayani pesanan karena menu warkop belum ada!\n");
+                printf("[INFO] Silakan isi daftar menu terlebih dahulu di menu Kelola Menu Warkop (Opsi 5).\n");
+                continue; // Langsung lompat ke perulangan berikutnya/kembali ke menu utama
+            }
+
             AntreanNode* pelanggan = popAntrean();
             if (pelanggan == NULL) {
                 printf("\n[INFO] Antrean kosong! Belum ada pelanggan.\n");
             } else {
+            
                 printf("\n====================================\n");
                 printf(">>> MELAYANI: %s %s\n", pelanggan->nama, 
                        pelanggan->isMember ? "[MEMBER VIP]" : "[Regular]");
