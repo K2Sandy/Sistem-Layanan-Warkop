@@ -234,6 +234,30 @@ typedef struct RiwayatNode {
 RiwayatNode* headRiwayat = NULL; // Head untuk linked list riwayat
 int jumlahRiwayat = 0;           // Counter total transaksi dinamis
 
+void tambahRiwayat(const char* nama, const char* pesanan, int total) {
+    RiwayatNode* newNode = (RiwayatNode*)malloc(sizeof(RiwayatNode));
+    if (newNode == NULL) {
+        printf("[ERROR] Gagal mengalokasikan memori untuk riwayat!\n");
+        return;
+    }
+    strcpy(newNode->nama_pelanggan, nama);
+    strcpy(newNode->pesanan, pesanan);
+    newNode->total_harga = total;
+    newNode->next = NULL;
+
+    // Menambahkan di akhir Linked List (Insert Last)
+    if (headRiwayat == NULL) {
+        headRiwayat = newNode;
+    } else {
+        RiwayatNode* curr = headRiwayat;
+        while (curr->next != NULL) {
+            curr = curr->next;
+        }
+        curr->next = newNode;
+    }
+    jumlahRiwayat++; 
+}
+
 void swapRiwayat(Riwayat* a, Riwayat* b) {
     Riwayat temp = *a;
     *a = *b;
