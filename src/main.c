@@ -3,9 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-// =================================================================
-// 1. STRUKTUR DATA: PRIORITY QUEUE (LINKED LIST) UNTUK ANTREAN
-// =================================================================
+
 typedef struct AntreanNode {
     char nama[50];
     bool isMember;
@@ -66,9 +64,7 @@ void cetakAntrean() {
 }
 
 
-// =================================================================
-// 2. STRUKTUR DATA: BINARY SEARCH TREE (BST) UNTUK MENU WARKOP
-// =================================================================
+
 typedef struct MenuNode {
     char nama[50];
     int harga;
@@ -221,9 +217,6 @@ int countMenu(MenuNode* root) {
 }
 
 
-// =================================================================
-// 3. STRUKTUR DATA: LINKED LIST UNTUK RIWAYAT TRANSAKSI (DINAMIS)
-// =================================================================
 typedef struct RiwayatNode {
     char nama_pelanggan[50];
     char pesanan[200];
@@ -294,9 +287,7 @@ void simpanKeRiwayatTxt(RiwayatNode* r) {
     }
 }
 
-// =================================================================
-// 4. SUBMENU: KELOLA MENU DENGAN INTERFACE YANG LEBIH BAIK
-// =================================================================
+
 void subMenuKelola(MenuNode** rootMenu) {
     int menuPilihan;
     char konfirmasi;
@@ -390,7 +381,7 @@ void subMenuKelola(MenuNode** rootMenu) {
             }
 
         } else if (menuPilihan == 3) {
-            // ===== UBAH HARGA MENU =====
+            
             char namaUbah[50];
             int hargaBaru;
             
