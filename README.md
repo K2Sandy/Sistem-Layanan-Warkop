@@ -1,5 +1,6 @@
 # Sistem-Layanan-Warkop
-sistem ini kami buat karena permasalahan pada antrian warkop yang masi kurang efisien, sehingga kami menemukan solusi untuk membuat sebuah sistem yang bernama sistem layanan warkop yang diharap dapat membuat layanan operasional pada warkop menjadi lebih efisien dan dapat mengurangu human error.
+
+sistem ini kami buat karena permasalahan pada antrian warkop yang kami rasa masih kurang efisien, sehingga kami terpikir suatu solusi untuk membuat sebuah sistem yang bernama sistem layanan warkop yang diharap dapat membuat layanan operasional pada warkop menjadi lebih efisien dan dapat mengurangi human error.
 
 Fitur Utama : 
 Sistem ini menyediakan 5 fitur utama beserta sub-fitur pengelolaan yang dinamis:
@@ -13,3 +14,9 @@ Laporan Penjualan Dinamis: Menampilkan riwayat pendapatan yang dapat diurutkan b
 Daftar Menu Otomatis Terurut: Menampilkan seluruh menu yang tersedia secara alfabetis (A-Z).
 
 Kelola Menu Warkop (CRUD): Sub-menu khusus untuk Menambah Menu baru, Mengubah Nama, Mengubah Harga, serta Menghapus Menu dengan sistem validasi.
+
+Program manajemen warkop ini menerapkan beberapa struktur data dinamis untuk mengelola operasionalnya secara efisien. Pada sistem pendaftaran antrean pelanggan, program menggunakan struktur data antrean berprioritas (priority queue) yang diimplementasikan melalui singly linked list. Alih-alih menerapkan prinsip first-in, first-out (FIFO) secara kaku, penyisipan data diatur berdasarkan status keanggotaan pelanggan. Ketika pelanggan berstatus member VIP mendaftar, algoritma penyisipan akan memindai barisan dan menempatkan node baru tersebut di depan pelanggan reguler, namun tetap berada di belakang member VIP lain yang sudah mengantre lebih dulu. Proses penghapusan antrean (pop) tetap dilakukan dari barisan paling depan (head) untuk melayani pelanggan yang memiliki prioritas tertinggi saat itu.
+
+Untuk pengelolaan daftar menu warkop, program memanfaatkan struktur data pohon pencarian biner atau binary search tree (BST). Setiap item menu disimpan dalam bentuk node pohon yang posisi penempatannya ditentukan berdasarkan perbandingan alfabetis nama menu menggunakan komparasi string. Penggunaan BST ini memungkinkan proses pencarian, pembaruan harga, dan penghapusan menu berjalan secara efisien tanpa harus memeriksa seluruh data satu per satu. Selain itu, program menggunakan algoritma penelusuran in-order traversal secara rekursif saat mencetak daftar menu atau menyimpannya ke dalam file eksternal, sehingga seluruh hidangan otomatis tersusun secara berurutan dan rapi dari huruf A sampai Z.
+
+Komponen terakhir dari sistem ini adalah pencatatan riwayat transaksi dan penyusunan laporan penjualan yang menggabungkan struktur data penampung dengan algoritma pengurutan cepat (quick sort). Setiap transaksi yang selesai dilayani akan langsung dimasukkan ke dalam singly linked list khusus riwayat menggunakan metode penyisipan di akhir (insert last). Ketika pengguna ingin melihat laporan penjualan yang terurut berdasarkan pendapatan, program menerapkan strategi dengan mengalokasikan sebuah array of pointers dinamis secara sementara untuk menyalin alamat memori dari setiap node riwayat. Algoritma quick sort yang berbasis divide and conquer kemudian dijalankan untuk mengurutkan pointer transaksi tersebut berdasarkan nominal total harga, baik secara menaik (ascending) maupun menurun (descending), sebelum akhirnya menampilkan data yang sudah terurut ke layar dan membebaskan kembali memori array pembantu tersebut.
