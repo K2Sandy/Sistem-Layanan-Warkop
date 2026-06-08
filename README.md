@@ -35,7 +35,7 @@ Klon atau simpan kode program ke dalam file bernama main.c.
 
 Buka Terminal/Command Prompt di direktori yang sama dengan file tersebut.
 
-Kompilasi kode menggunakan perintah berikut: gcc -o main.c main kemudian ./main
+Kompilasi kode menggunakan perintah berikut: gcc main.c -o  main kemudian ./main
 
 
 
