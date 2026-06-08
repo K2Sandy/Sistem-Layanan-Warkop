@@ -1,1 +1,2 @@
 # Sistem-Layanan-Warkop
+sistem ini kami buat karena permasalahan pada antrian warkop yang masi kurang efisien, sehingga kami menemukan solusi untuk membuat sebuah sistem yang bernama sistem layanan warkop yang diharap dapat membuat layanan operasional pada warkop menjadi lebih efisien dan dapat mengurangu human error.
